@@ -4,7 +4,7 @@ import SockJS from 'sockjs-client';
 import { Stomp } from '@stomp/stompjs';
 
 const client = Stomp.over(() => {
-    return new SockJS('http://localhost:8080/app');
+    return new SockJS('http://localhost/api/gs-points');
 });
 
 client.connect({}, () => {
@@ -12,4 +12,3 @@ client.connect({}, () => {
         document.getElementById("index").innerHTML = message;
     });
 });
-
