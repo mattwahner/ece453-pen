@@ -34,13 +34,18 @@ const subscribeGyro = (client) => {
 };
 
 const subscribePoints = (client) => {
-    client.subscribe('/topic/points', (message) => {
+    client.subscribe('/topic/point', (message) => {
         let response = JSON.parse(message.body);
         console.log(response);
         const context = canvas.getContext("2d");
         context.fillStyle = "red";
         response.points.forEach((point) => {
-            context.fill
+            context.beginPath();
+            context.lineWidth = 0;
+            context.arc(point.x, point.y, 5, 0, 2 * Math.PI);
+            context.fillStyle = "black";
+            context.fill();
+            context.stroke();
         });
     });
 };

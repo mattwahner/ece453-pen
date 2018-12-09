@@ -1,6 +1,6 @@
 package com.pen.backend.controllers;
 
-import com.pen.backend.models.Points;
+import com.pen.backend.models.Point;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.validation.annotation.Validated;
@@ -18,9 +18,9 @@ public class PointsController {
         this.simpMessagingTemplate = simpMessagingTemplate;
     }
 
-    @PostMapping("/points")
-    public void addPoints(@Validated @RequestBody Points points) {
-        simpMessagingTemplate.convertAndSend("/topic/points", points);
+    @PostMapping("/point")
+    public void addPoints(@Validated @RequestBody Point point) {
+        simpMessagingTemplate.convertAndSend("/topic/point", point);
     }
 
 }
