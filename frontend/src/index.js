@@ -93,12 +93,23 @@ class CanvasHandler {
         this.colorModalFeedback.style.backgroundColor = `rgb(${color.red}, ${color.green}, ${color.blue})`;
         if (this.selectingColor)
             this.color = color;
+        this.updateDrawing();
     }
 
     setThickness(thickness) {
         this.thicknessModalFeedback.innerText = `${thickness}`;
         if (this.selectingThickness)
             this.thickness = thickness;
+        this.updateDrawing();
+    }
+
+    updateDrawing() {
+        this.client.send('/app/drawing', {}, JSON.stringify({
+            "red": this.color.red,
+            "green": this.color.green,
+            "blue": this.color.blue,
+            "thickness": this.thickness
+        }));
     }
 
     updateColor(gyro) {
