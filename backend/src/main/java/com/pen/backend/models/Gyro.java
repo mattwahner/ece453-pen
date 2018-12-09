@@ -3,6 +3,8 @@ package com.pen.backend.models;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -12,17 +14,20 @@ public class Gyro {
     private static final String GYRO_MESSAGE = "Gyro data should be an integer between 0 and 359";
 
     @NotNull
-    @Size(min = 0, max = 359, message = GYRO_MESSAGE)
+    @Min(0)
+    @Max(359)
     @ApiModelProperty(notes = GYRO_MESSAGE)
     private Integer x;
 
     @NotNull
-    @Size(min = 0, max = 359, message = GYRO_MESSAGE)
+    @Min(0)
+    @Max(359)
     @ApiModelProperty(notes = GYRO_MESSAGE)
     private Integer y;
 
     @NotNull
-    @Size(min = 0, max = 359, message = GYRO_MESSAGE)
+    @Min(0)
+    @Max(359)
     @ApiModelProperty(notes = GYRO_MESSAGE)
     private Integer z;
 

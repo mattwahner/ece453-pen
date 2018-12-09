@@ -22,7 +22,7 @@ public class GyroController {
     @PostMapping("/gyro")
     @ApiOperation(value = "Send gyro data to backend", notes = "Ensure all gyro data is an integer between 0 and 359")
     public void setGyroData(@Validated @RequestBody Gyro gyro) {
-        this.simpMessagingTemplate.convertAndSend("/topics/gyro", gyro);
+        this.simpMessagingTemplate.convertAndSend("/topic/gyro", gyro);
     }
 
 }
