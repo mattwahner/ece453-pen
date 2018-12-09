@@ -19,7 +19,7 @@ public class PointController {
     }
 
     @PostMapping("/point")
-    public void addPoints(@Validated @RequestBody Point point) {
+    public void addPoint(@Validated @RequestBody Point point) {
         simpMessagingTemplate.convertAndSend("/topic/point", point);
     }
 
