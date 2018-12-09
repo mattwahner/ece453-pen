@@ -3,6 +3,8 @@ import SockJS from 'sockjs-client';
 import { Stomp } from '@stomp/stompjs';
 import './main.css';
 
+const canvas = document.getElementById("main");
+
 const client = Stomp.over(() => {
     return new SockJS('/api/gs-points');
 });
@@ -33,7 +35,13 @@ const subscribeGyro = (client) => {
 
 const subscribePoints = (client) => {
     client.subscribe('/topic/points', (message) => {
-        console.log(JSON.parse(message.body))
+        let response = JSON.parse(message.body);
+        console.log(response);
+        const context = canvas.getContext("2d");
+        context.fillStyle = "red";
+        response.points.forEach((point) => {
+            context.fill
+        });
     });
 };
 
@@ -43,7 +51,6 @@ client.connect({}, () => {
 });
 
 const sendCanvas = () => {
-    let canvas = document.getElementById("main");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     client.send('/app/window', {}, JSON.stringify({

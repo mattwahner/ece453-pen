@@ -14,7 +14,6 @@ public class WindowController {
     @MessageMapping("/window")
     public void setWindow(@Payload Window window) {
         this.window = window;
-        System.out.println("Width: " + window.getWidth() + "\tHeight: " + window.getHeight());
     }
 
     @GetMapping("/window")
