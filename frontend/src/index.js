@@ -5,7 +5,7 @@ import { Stomp } from '@stomp/stompjs';
 import './main.css';
 
 const client = Stomp.over(() => {
-    return new SockJS('http://localhost/api/gs-points');
+    return new SockJS('/api/gs-points');
 });
 
 window.addEventListener('resize', (event) => {
