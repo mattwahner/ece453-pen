@@ -129,7 +129,7 @@ class CanvasHandler {
     drawPoint(point) {
         if (!this.lastPoint) {
             this.lastPoint = point;
-        } else if (this.drawing) {
+        } else {
             this.context.beginPath();
             this.context.lineWidth = this.thickness;
             this.context.strokeStyle = `rgb(${this.color.red}, ${this.color.green}, ${this.color.blue})`;
